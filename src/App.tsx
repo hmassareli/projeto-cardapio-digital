@@ -98,7 +98,7 @@ function App() {
   const [menu, setMenu] = useState<Menu>([]);
   const options = {
     method: "GET",
-    url: "./src/assets/data.json",
+    url: "/data.json",
   };
   useEffect(() => {
     axios.request(options).then((response) => {
