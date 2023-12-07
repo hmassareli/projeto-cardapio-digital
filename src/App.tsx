@@ -45,6 +45,7 @@ const Product = styled.div`
   border-radius: 4px;
   background-color: white;
   flex-direction: row-reverse;
+  justify-content: space-between;
   align-items: center;
   padding: 10px;
   & img {
@@ -55,7 +56,9 @@ const Product = styled.div`
 
   & .product-info {
     max-width: 100%;
+    max-width: 500px;
     display: flex;
+    gap: 15px;
     flex-direction: column;
     padding-inline: 20px;
     align-items: start;
@@ -63,9 +66,10 @@ const Product = styled.div`
     text-align: start;
     & .product-name {
       font-size: 20px;
+      margin: 0;
       text-align: start;
     }
-    & p {
+    & .product-details {
       margin: 0;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -94,6 +98,13 @@ const Category = styled.div`
   align-items: start;
   width: 100%;
 `;
+
+const Price = styled.p`
+  font-size: 20px;
+  font-weight: 500;
+  margin: 0;
+  margin-top: auto;
+`;
 function App() {
   const [menu, setMenu] = useState<Menu>([]);
   const options = {
@@ -121,7 +132,8 @@ function App() {
                   <img src={BASE_URL_IMG + item.logoUrl} />
                   <div className="product-info">
                     <h2 className="product-name">{item.description}</h2>
-                    <p>{item?.details}</p>
+                    <p className="product-details">{item?.details}</p>
+                    <Price>R$ {item?.unitPrice}</Price>
                   </div>
                 </Product>
               ))}
